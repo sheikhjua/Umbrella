@@ -44,8 +44,8 @@
 		F09793C524525D73004AA3BC /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793C424525D73004AA3BC /* MailView.swift */; };
 		F09793C724525D87004AA3BC /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793C624525D87004AA3BC /* TextFieldView.swift */; };
 		F09793C924525F7B004AA3BC /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793C824525F7B004AA3BC /* Buttons.swift */; };
-		F09793CB24525FFB004AA3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F09793CA24525FFB004AA3BC /* GoogleService-Info.plist */; };
 		F09793CD2452607F004AA3BC /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793CC2452607F004AA3BC /* LocationView.swift */; };
+		F09793D32452702F004AA3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F09793D22452702F004AA3BC /* GoogleService-Info.plist */; };
 		F467A62054EB72D6459A7EF3 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AFFDDF9E7AD21875CA1896 /* Pods_Umbrella.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,8 +92,8 @@
 		F09793C424525D73004AA3BC /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		F09793C624525D87004AA3BC /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		F09793C824525F7B004AA3BC /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		F09793CA24525FFB004AA3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F09793CC2452607F004AA3BC /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		F09793D22452702F004AA3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 		F09793552451B542004AA3BC = {
 			isa = PBXGroup;
 			children = (
-				F09793CA24525FFB004AA3BC /* GoogleService-Info.plist */,
+				F09793D22452702F004AA3BC /* GoogleService-Info.plist */,
 				F09793602451B542004AA3BC /* Umbrella */,
 				F097935F2451B542004AA3BC /* Products */,
 				B539D11B4D13D0D410A88EE3 /* Pods */,
@@ -386,9 +386,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09793D32452702F004AA3BC /* GoogleService-Info.plist in Resources */,
 				F097936E2451B544004AA3BC /* LaunchScreen.storyboard in Resources */,
 				F097936B2451B544004AA3BC /* Preview Assets.xcassets in Resources */,
-				F09793CB24525FFB004AA3BC /* GoogleService-Info.plist in Resources */,
 				F09793682451B544004AA3BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -88,6 +88,7 @@ class FirebaseAuthManager: FireBaseManagerType{
                 }
                 completion(.success(self.currentUserProfile))
                 self.loginState = true
+                self.saveUserCredentials(loginInfo: loginInfo)
             }
         }
     }
@@ -100,6 +101,7 @@ class FirebaseAuthManager: FireBaseManagerType{
                         if let userProfile = userProfile {
                             self.currentUserProfile = userProfile
                             completion(.success(self.currentUserProfile))
+                            self.saveUserCredentials(loginInfo: loginInfo)
                         }
                     case .failure(_):
                         break
@@ -228,5 +230,9 @@ class FirebaseAuthManager: FireBaseManagerType{
                 completion(.success(true))
             }
         }
+    }
+    private func saveUserCredentials(loginInfo: LoginInfo){
+        UserDefaults.standard.setEmail(email: loginInfo.email)
+        UserDefaults.standard.setPassword(password: loginInfo.password)
     }
 }

@@ -10,6 +10,30 @@ import CoreLocation
 import CommonCrypto
 
 extension UserDefaults{
+    // MARK:- Email address
+    func getEmail()->String?{
+        var email: String?
+        if getLoginState(), let emailAddress = self.value(forKey: "email") as? String {
+            email = emailAddress
+        }
+        return email
+    }
+    func setEmail(email: String){
+        self.set(email, forKey: "email")
+    }
+    // MARK:- Password
+    func getPassword()->String?{
+        var password: String?
+        if getLoginState(), let passwordString = self.value(forKey: "password") as? String {
+            password = passwordString
+        }
+        return password
+    }
+    func setPassword(password: String){
+        self.set(password, forKey: "password")
+    }
+
+    
     // MARK:- Login State
     func getLoginState()->Bool{
         var state = false
