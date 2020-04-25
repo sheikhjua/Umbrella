@@ -46,6 +46,9 @@
 		F09793C924525F7B004AA3BC /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793C824525F7B004AA3BC /* Buttons.swift */; };
 		F09793CD2452607F004AA3BC /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793CC2452607F004AA3BC /* LocationView.swift */; };
 		F09793D32452702F004AA3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F09793D22452702F004AA3BC /* GoogleService-Info.plist */; };
+		F09793D52452F1D0004AA3BC /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793D42452F1D0004AA3BC /* ActivityIndicatorView.swift */; };
+		F09793D72452F4FC004AA3BC /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793D62452F4FC004AA3BC /* View+extension.swift */; };
+		F09793D924533D87004AA3BC /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09793D824533D87004AA3BC /* MoreViewModel.swift */; };
 		F467A62054EB72D6459A7EF3 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AFFDDF9E7AD21875CA1896 /* Pods_Umbrella.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		F09793C824525F7B004AA3BC /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		F09793CC2452607F004AA3BC /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		F09793D22452702F004AA3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F09793D42452F1D0004AA3BC /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		F09793D62452F4FC004AA3BC /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		F09793D824533D87004AA3BC /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,7 @@
 				F09793832452063F004AA3BC /* Bundle+extension.swift */,
 				F09793852452066F004AA3BC /* Date+extention.swift */,
 				F09793872452068F004AA3BC /* Notification+extention.swift */,
+				F09793D62452F4FC004AA3BC /* View+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 			children = (
 				F097939524520E52004AA3BC /* LocationViewModel.swift */,
 				F097939724520E79004AA3BC /* UserViewModel.swift */,
+				F09793D824533D87004AA3BC /* MoreViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 				F09793C224525D5D004AA3BC /* ImagePickerView.swift */,
 				F09793C424525D73004AA3BC /* MailView.swift */,
 				F09793C624525D87004AA3BC /* TextFieldView.swift */,
+				F09793D42452F1D0004AA3BC /* ActivityIndicatorView.swift */,
 			);
 			path = UIKitViews;
 			sourceTree = "<group>";
@@ -450,6 +459,7 @@
 				F09793C724525D87004AA3BC /* TextFieldView.swift in Sources */,
 				F09793C524525D73004AA3BC /* MailView.swift in Sources */,
 				F097938224520614004AA3BC /* String+extension.swift in Sources */,
+				F09793D72452F4FC004AA3BC /* View+extension.swift in Sources */,
 				F097939324520E01004AA3BC /* Firebase.swift in Sources */,
 				F09793A22452595A004AA3BC /* MainView.swift in Sources */,
 				F09793842452063F004AA3BC /* Bundle+extension.swift in Sources */,
@@ -457,6 +467,7 @@
 				F097938E24520D77004AA3BC /* Tabs.swift in Sources */,
 				F09793C124525D4E004AA3BC /* MapView.swift in Sources */,
 				F09793AE24525A32004AA3BC /* LogInView.swift in Sources */,
+				F09793D52452F1D0004AA3BC /* ActivityIndicatorView.swift in Sources */,
 				F09793C324525D5D004AA3BC /* ImagePickerView.swift in Sources */,
 				F09793BE24525B7D004AA3BC /* AppFeedBackView.swift in Sources */,
 				F09793642451B542004AA3BC /* SceneDelegate.swift in Sources */,
@@ -477,6 +488,7 @@
 				F097939824520E79004AA3BC /* UserViewModel.swift in Sources */,
 				F09793B424525ABD004AA3BC /* UserView.swift in Sources */,
 				F09793A8245259DA004AA3BC /* ProfileView.swift in Sources */,
+				F09793D924533D87004AA3BC /* MoreViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

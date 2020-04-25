@@ -11,15 +11,17 @@ import CoreLocation
 
 struct LocationView: View {
     @ObservedObject var locationViewModel = LocationViewModel()
-    
+    //@ObservedObject var userViewModel = UserViewModel.shared
     var body: some View {
         VStack{
-            Text("You current location is: ")
-            HStack{
-                Text("Latitude : \(self.locationViewModel.userLatitude)")
-                Text("Longitude : \(self.locationViewModel.userLongitude)")
+      //      if userViewModel.isDataLoaded {
+                Text("You current location is: ")
+                HStack{
+                    Text("Latitude : \(self.locationViewModel.userLatitude)")
+                    Text("Longitude : \(self.locationViewModel.userLongitude)")
+                }
             }
-        }
+       // }
     }
 }
 

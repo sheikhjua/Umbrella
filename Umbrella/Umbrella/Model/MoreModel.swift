@@ -14,50 +14,9 @@ struct MoreList: Identifiable{
 }
 // MARK:- More List Section
 struct MoreListSection: Identifiable{
-    private let authManager = FirebaseAuthManager.shared
     var id = UUID()
-    var title: MoreListSections
-    var rows: [MoreListItem] {
-        switch title{
-        case .aboutTheApp:
-            return [
-                .init(title: .appFeedback, targetView : AnyView(AppFeedbackView())),
-                .init(title: .aboutTheApp, targetView : AnyView(AboutTheAppView())),
-                .init(title: .appVersion, targetView : AnyView(AppVersionView()))
-            ]
-        case .myAccount:
-            if UserDefaults.standard.getLoginState() {
-                return [
-                    .init(title: .logOut, shouldNavigate: false),
-                    .init(title: .manageProfile,targetView: AnyView(ProfileView()))
-                ]
-            } else {
-                return [
-                    .init(title: .logIn, targetView : AnyView(LogInView())),
-                    .init(title: .signUp, targetView : AnyView(SignUpView()))
-                ]
-            }
-        case .adminMenu:
-            if UserDefaults.standard.getUserType() == .owner || UserDefaults.standard.getUserType() == .superUser {
-                return [
-                    .init(title: .manageGroups),
-                    .init(title: .manageUsers),
-                    .init(title: .managePlaces)
-                ]
-            } else {
-                return [
-                ]
-            }
-        }
-    }
-    var shouldShow: Bool {
-        let userType = UserDefaults.standard.getUserType()
-        if title == .adminMenu {
-            return (userType == .owner || userType == .superUser)
-        } else {
-            return false
-        }
-    }
+    var title: MoreListSections = .aboutTheApp
+    var rows: [MoreListItem] = []
 }
 // MARK:- More List Item
 struct MoreListItem: Identifiable{

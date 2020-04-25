@@ -88,6 +88,7 @@ struct UserProfile{
     var lastName: String? = nil
     var phoneNumber: String? = nil
     var profileImage: UIImage? = nil
+    var userType: UserType = .unknown
 }
 //MARK: - Location
 struct Location: Identifiable{

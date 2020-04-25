@@ -40,12 +40,12 @@ protocol FireBaseManagerType: class {
 class FirebaseAuthManager: FireBaseManagerType{
     static let shared = FirebaseAuthManager()
     private init(){}
-    var currentUserProfile: UserProfile = UserProfile()
+    var currentUserProfile: UserProfile = UserProfile() {
+        didSet{
+            NotificationCenter.default.post(name: .profileChanged, object: nil)
+        }
+    }
     var loginState: Bool = false
-//    var currentUser:FIRUser? {
-//        return Auth.auth().currentUser
-//    }
-    
     func isUserExists(email: String, completion: @escaping (Result<Bool?, FireBaseError>) -> Void) {
         Auth.auth().fetchSignInMethods(forEmail: email) { (signInMethods, error ) in
             if let error = error{
@@ -100,13 +100,17 @@ class FirebaseAuthManager: FireBaseManagerType{
                     case .success(let userProfile):
                         if let userProfile = userProfile {
                             self.currentUserProfile = userProfile
-                            completion(.success(self.currentUserProfile))
-                            self.saveUserCredentials(loginInfo: loginInfo)
+                            //completion(.success(self.currentUserProfile))
+                            //self.saveUserCredentials(loginInfo: loginInfo)
+                            //self.loginState = true
                         }
                     case .failure(_):
                         break
                     }
                 }
+                completion(.success(self.currentUserProfile))
+                self.loginState = true
+                self.saveUserCredentials(loginInfo: loginInfo)
             } else if let error = error {
                 completion(.failure(.other(message: error.localizedDescription)))
             }
@@ -139,6 +143,7 @@ class FirebaseAuthManager: FireBaseManagerType{
                     userProfile.firstName = snapShot["firstName"] as? String
                     userProfile.lastName = snapShot["lastName"] as? String
                     userProfile.phoneNumber = snapShot["mobileNumber"] as? String
+                    userProfile.userType = UserType(rawValue: snapShot["userType"] as? String ?? "unknown") ?? .unknown
                     self.loadProfileImage(userID: userID) { (result) in
                         switch result{
                         case .failure(_):
@@ -168,7 +173,8 @@ class FirebaseAuthManager: FireBaseManagerType{
                         [ "firstName" : userProfile.firstName ?? "",
                           "lastName" : userProfile.lastName ?? "",
                           "mobileNumber" : userProfile.phoneNumber ?? "",
-                          "profileImageURL": profileImageURL
+                          "profileImageURL": profileImageURL,
+                          "userType": userProfile.userType
                     ]
                     let db = Firestore.firestore()
                     db.collection("users").document(userID).setData(profileDictionary) { (error) in

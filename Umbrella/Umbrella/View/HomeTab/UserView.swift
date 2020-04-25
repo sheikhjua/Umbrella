@@ -10,25 +10,37 @@ import SwiftUI
 struct UserView: View {
     @ObservedObject var userViewModel = UserViewModel()
     var body: some View {
-        HStack{
-            VStack{
-                HStack{
-                    Text("\(userViewModel.userFirstName) \(userViewModel.userLastName)")
-                    Spacer()
+        ZStack{
+            if !self.userViewModel.isDataLoaded {
+                GeometryReader { _ in
+                    ActivityIndicatorView(isAnimating: true)
+                        .configure { $0.color = .purple}
+                        .padding()
+                        .background(Color.gray.opacity(0.9))
+                        .cornerRadius(100)
                 }
+            } else {
                 HStack{
-                    Text("\(userViewModel.userPhoneNumber)")
-                    Spacer()
-                }
-            }.padding()
-            Image(uiImage: userViewModel.image)
-                .resizable()
-                .frame(width: 75, height: 75)
-                .clipShape(Circle())
-            .overlay(Circle()
-                .stroke(Color.blue)
-            )
-        }.padding()
+                    VStack{
+                        HStack{
+                            Text("\(userViewModel.userFirstName) \(userViewModel.userLastName)")
+                            Spacer()
+                        }
+                        HStack{
+                            Text("\(userViewModel.userPhoneNumber)")
+                            Spacer()
+                        }
+                    }.padding()
+                    Image(uiImage: userViewModel.image)
+                        .resizable()
+                        .frame(width: 75, height: 75)
+                        .clipShape(Circle())
+                        .overlay(Circle()
+                            .stroke(Color.blue)
+                    )
+                }.padding()
+            }
+        }
     }
 }
 

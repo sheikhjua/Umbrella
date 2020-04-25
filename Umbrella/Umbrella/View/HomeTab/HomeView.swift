@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreLocation
 
-struct HomeView: View {
+struct HomeView: View{
     @State private var locationPermissionStatus: Bool = false
     var body: some View {
         ZStack{
@@ -20,7 +20,6 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            // self.handleLocationPermissionStatus()
         }
         .alert(isPresented: self.$locationPermissionStatus) {
             Alert(title: Text("APP needs permission to use your current location"),

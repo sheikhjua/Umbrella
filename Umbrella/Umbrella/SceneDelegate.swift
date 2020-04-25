@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             !email.isEmpty, !password.isEmpty{
             let loginInfo = LoginInfo(email: email, password: password)
             FirebaseAuthManager.shared.loginUser(loginInfo: loginInfo) { (result) in
-                NotificationCenter.default.post(name: .logInStateChanged, object: nil)
+               // NotificationCenter.default.post(name: .profileChanged, object: nil)
             }
         }
         let mainView = MainView()

@@ -13,18 +13,18 @@ class UserViewModel: NSObject, ObservableObject{
     @Published var userLastName: String = ""
     @Published var userPhoneNumber: String = ""
     @Published var image: UIImage = UIImage(systemName: "person")!
-    @Published var loginState: Bool = false
-    
+    @Published var isDataLoaded: Bool = false
     override init(){
         super.init()
-        loadUserProfile()
+        if authManager.loginState{
+            loadUserProfile()
+        } else {
+            print("login state: \(authManager.loginState)")
+        }
         NotificationCenter.default.addObserver(forName: .profileChanged, object: nil, queue: .main) { (_) in
             if let _ = self.authManager.currentUserProfile.userID{
                 self.loadUserProfile()
             }
-        }
-        NotificationCenter.default.addObserver(forName: .logInStateChanged, object: nil, queue: .main) { (_) in
-            self.loadUserProfile()
         }
     }
     private func loadUserProfile(){
@@ -33,6 +33,6 @@ class UserViewModel: NSObject, ObservableObject{
         self.userLastName = userProfile.lastName ?? ""
         self.userPhoneNumber = userProfile.phoneNumber ?? ""
         self.image = userProfile.profileImage ?? UIImage(systemName: "person.fill")!
-        self.loginState = self.authManager.loginState
+        self.isDataLoaded = true
     }
 }

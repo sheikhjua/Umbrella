@@ -12,6 +12,8 @@ enum NotificationNames: String{
     case appStateChanged
     case locationAuthorizationStatusChanged
     case applicationRegainStatusChanged
+    case loadingStarted
+    case loadingCompleted
 }
 extension Notification.Name {
     static let profileChanged = Notification.Name(NotificationNames.profileChanged.rawValue)
@@ -19,4 +21,6 @@ extension Notification.Name {
     static let appStateChanged = Notification.Name(NotificationNames.appStateChanged.rawValue)
     static let locationAuthorizationStatusChanged = Notification.Name(NotificationNames.locationAuthorizationStatusChanged.rawValue)
     static let applicationRegainStatusChanged = Notification.Name(NotificationNames.applicationRegainStatusChanged.rawValue)
+    static let loadingStarted = Notification.Name(NotificationNames.loadingStarted.rawValue)
+    static let loadingCompleted = Notification.Name(NotificationNames.loadingCompleted.rawValue)
 }

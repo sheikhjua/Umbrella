@@ -9,11 +9,9 @@
 import SwiftUI
 
 struct MoreView: View {
+    private let authManager = FirebaseAuthManager.shared
+    @ObservedObject var moreTableViewModel = MoreTableViewModel()
     @State var list: [MoreListSection] = []
-//    @State var isUserLoggedIn: Bool?
-//    @State var userType: UserType?
-    @State var userLogInState = UserDefaults.standard.getLoginState()
-    
     var body: some View {
         NavigationView{
             List {
@@ -27,20 +25,24 @@ struct MoreView: View {
             }
         }.onAppear {
             UITableView.appearance().tableFooterView = UIView()
-            self.list = self.createMoreList()
+            self.loadMoreList()
             NotificationCenter.default.addObserver(forName: .logInStateChanged, object: nil, queue: .main) { (_) in
-                self.list = self.createMoreList()
+                self.loadMoreList()
             }
         }
+        
     }
-    private func createMoreList()->[MoreListSection]{
-        let myAccountSection = MoreListSection(title: .myAccount)
-        let adminSection = MoreListSection(title: .adminMenu)
-        let aboutMyApp = MoreListSection(title: .aboutTheApp)
-        if adminSection.rows.isEmpty {
-            return [myAccountSection, aboutMyApp]
-        } else {
-            return [myAccountSection, adminSection, aboutMyApp]
+    private func loadMoreList(){
+        switch authManager.currentUserProfile.userType {
+        case .owner, .superUser:
+            self.list = [self.moreTableViewModel.myAccountSection,
+                         self.moreTableViewModel.adminSection,
+                         self.moreTableViewModel.aboutTheAppSection
+            ]
+        case .unknown, .user:
+            self.list = [self.moreTableViewModel.myAccountSection,
+                         self.moreTableViewModel.aboutTheAppSection
+            ]
         }
     }
 }
@@ -64,7 +66,7 @@ struct MoreListItemView: View {
                 Text(row.title.rawValue.titleCase())
                     .foregroundColor(row.title.textColor)
                     .onTapGesture {
-                    UserDefaults.standard.set(false, forKey: "logInState")
+                        UserDefaults.standard.set(false, forKey: "logInState")
                         NotificationCenter.default.post(name: .logInStateChanged, object: nil)
                 }
             }
